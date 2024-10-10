@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Education and Digital Learning Challenges</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            background-color: #007bff; /* Blue background for the title */
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            background-color: #cce5ff; /* Light blue background for the subheadings */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .chart {
+            margin-bottom: 40px;
+        }
+        .chart-full {
+            display: flex;
+            justify-content: center;
+        }
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: flex-start; /* Aligning to the left */
+            margin-bottom: 50px;
+        }
+        .centered {
+            display: flex;
+            justify-content: center; /* Center the content */
+        }
+        .side-by-side {
+            display: flex;
+            align-items: flex-start; /* Align items at the top */
+            justify-content: space-between;
+        }
+        .side-by-side .text-section {
+            width: 50%;
+            padding-left: 40px; /* Increased padding to push text to the right */
+            flex-grow: 1;
+        }
+        .side-by-side .chart {
+            width: 50%;
+            flex-grow: 1;
+        }
+        .move-left {
+            display: flex;
+            justify-content: flex-start; /* Align all the way to the left */
+            width: 100%;
+        }
+        .text-right {
+            width: 50%;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>GLOBAL EDUCATION AND DIGITAL LEARNING CHALLENGES</h1>
+
+    <!-- Literacy Rates Header and Choropleth Map with Text -->
+    <h2>LITERACY RATES</h2>
+    <div class="side-by-side">
+        <!-- Choropleth Map on the Left -->
+        <div class="chart" id="chloropleth-map"></div>
+        
+        <!-- Text Section on the Right -->
+        <div class="text-section">
+            <h3>Youth Literacy Rates Globally</h3>
+            <p>
+                The map showcases the youth literacy rates (ages 15-24) across different countries.
+                Darker shades indicate higher literacy rates, while lighter shades show lower literacy rates.
+                Countries without available data are shown in gray.
+            </p>
+            <p>
+                This visualization helps highlight global disparities in education and literacy,
+                revealing which regions have made significant strides and where improvements are still needed.
+            </p>
+        </div>
+    </div>
+
+    <!-- New Subheading for Completion Rate by Gender -->
+    <h2>COMPLETION RATE BY GENDER</h2>
+
+    <!-- Completion Rates Donut Chart -->
+    <div class="chart-container centered">
+        <div id="completion-donut" class="chart-full"></div>
+    </div>
+
+    <!-- Learning Poverty with Internet Access Header and Bubble Chart with Description -->
+    <h2>LEARNING POVERTY WITH INTERNET ACCESS</h2>
+    <div class="side-by-side">
+        <!-- Learning Poverty Bubble Chart on the Left -->
+        <div id="learning-poverty" class="chart-full"></div>
+
+        <!-- Text Section on the Right -->
+        <div class="text-right">
+            <h3>Learning Poverty and Internet Access Analysis</h3>
+            <p>
+                The bubble chart illustrates a significant global challenge: learning poverty in relation to internet access and a country's wealth, measured by GNI per capita. Larger bubbles represent countries with larger populations, while their color shows the percentage of internet users in each country.
+            </p>
+            <p><strong>Key Insights:</strong></p>
+            <ul>
+                <li><strong>High Learning Poverty, Low GNI:</strong> Many of the larger bubbles fall into the lower GNI and higher learning poverty ranges. These countries tend to have a lower percentage of internet users and are likely to face significant challenges in accessing digital resources, which exacerbates learning poverty.</li>
+                <li><strong>Internet Access Influence:</strong> Countries with more internet access (green bubbles) tend to have a lower learning poverty rate, indicating a correlation between digital access and improved educational outcomes.</li>
+                <li><strong>Economic Divide:</strong> Wealthier countries (higher GNI per capita) are clustered at the lower end of the learning poverty scale, which shows how economic resources may contribute to reducing learning poverty. However, internet access also plays a vital role in bridging this educational gap.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Internet Consumption Header and Side-by-Side Charts -->
+    <h2>INTERNET CONSUMPTION</h2>
+    <div class="two-column">
+        <div id="internet-user-stream" class="chart"></div>
+        <div id="learning-platform-dot" class="chart"></div>
+    </div>
+
+    <!-- Embedding the Vega-Lite charts using JavaScript -->
+    <script type="text/javascript">
+        // Choropleth Map
+        vegaEmbed('#chloropleth-map', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/chloropleth_lr.json').catch(console.error);
+
+        // Completion Donut Chart
+        vegaEmbed('#completion-donut', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/completion_donut.json').catch(console.error);
+
+        // Learning Poverty Bubble Chart
+        vegaEmbed('#learning-poverty', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/learning_poverty_bubble.json').catch(console.error);
+
+        // Internet User Stream Chart
+        vegaEmbed('#internet-user-stream', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/interney_user_stream.json').catch(console.error);
+
+        // Learning Platform Dot Chart
+        vegaEmbed('#learning-platform-dot', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/learning_platform_dot.json').catch(console.error);
+    </script>
+
+</body>
+</html>
