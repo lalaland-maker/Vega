@@ -11,30 +11,34 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: white; /* No background color */
         }
         h1 {
             text-align: center;
-            background-color: #007bff; /* Blue background for the title */
-            color: white;
+            background-color: #2d31bd; /* Dark blue background for the title */
+            color: white; /* White text color */
             padding: 15px;
             border-radius: 8px;
         }
         h2 {
             text-align: center;
             background-color: #cce5ff; /* Light blue background for the subheadings */
-            padding: 10px;
+            padding: 5px; /* Reduced padding */
             border-radius: 5px;
+            text-transform: capitalize; /* Capitalize first letter of subheadings */
+            margin-top: 10px; /* Added margin-top for better spacing */
         }
         .chart {
             margin-bottom: 40px;
+            background-color: white; /* Match the background color of charts to no color */
         }
         .chart-full {
             display: flex;
             justify-content: center;
         }
-        .two-column {
+        .three-column {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 20px;
         }
         .chart-container {
@@ -69,35 +73,38 @@
             width: 50%;
             padding-left: 20px;
         }
+        .center-text {
+            text-align: center; /* Center text alignment */
+        }
     </style>
 </head>
 <body>
 
-    <h1>GLOBAL EDUCATION AND DIGITAL LEARNING CHALLENGES</h1>
+    <h1>Global Education and Digital Learning Challenges</h1>
 
     <!-- Literacy Rates Header and Choropleth Map with Text -->
-    <h2>LITERACY RATES</h2>
+    <h2>Literacy rates</h2>
     <div class="side-by-side">
         <!-- Choropleth Map on the Left -->
         <div class="chart" id="chloropleth-map"></div>
         
         <!-- Text Section on the Right -->
         <div class="text-section">
-            <h3>Youth Literacy Rates Globally</h3>
+            <p><strong>Key Insights:</strong></p>
             <p>
-                The map showcases the youth literacy rates (ages 15-24) across different countries.
-                Darker shades indicate higher literacy rates, while lighter shades show lower literacy rates.
-                Countries without available data are shown in gray.
+                From the map, we observe that countries in North America, Europe, and parts of Asia have high youth literacy rates, with most countries in these regions shaded in dark blue, indicating literacy rates close to 100%. On the other hand, countries in Sub-Saharan Africa and South Asia are shaded in lighter blue, showing lower literacy rates, particularly in countries such as Chad, Niger, and Afghanistan, where educational resources may be scarce, and literacy challenges are more pronounced.
             </p>
             <p>
-                This visualization helps highlight global disparities in education and literacy,
-                revealing which regions have made significant strides and where improvements are still needed.
+                This disparity reflects the socio-economic differences between countries, where access to quality education, gender equality in education, and governmental policies significantly impact literacy outcomes. This map highlights the regions that may require targeted educational interventions to boost literacy rates among the youth.
+            </p>
+            <p>
+                Additionally, the data points to the importance of governmental and organizational investments in education to reduce these disparities. For instance, countries with more significant financial resources and robust education systems tend to demonstrate higher literacy rates. In contrast, regions lacking infrastructure and educational resources struggle to improve literacy, often leaving the younger population disadvantaged in a highly digital world.
             </p>
         </div>
     </div>
 
     <!-- New Subheading for Completion Rate by Gender -->
-    <h2>COMPLETION RATE BY GENDER</h2>
+    <h2 style="margin-top: 5px;">Completion rate by gender</h2> <!-- Reduced the space between this subheading and the map -->
 
     <!-- Completion Rates Donut Chart -->
     <div class="chart-container centered">
@@ -105,7 +112,7 @@
     </div>
 
     <!-- Learning Poverty with Internet Access Header and Bubble Chart with Description -->
-    <h2>LEARNING POVERTY WITH INTERNET ACCESS</h2>
+    <h2>Learning poverty with internet access</h2>
     <div class="side-by-side">
         <!-- Learning Poverty Bubble Chart on the Left -->
         <div id="learning-poverty" class="chart-full"></div>
@@ -125,12 +132,18 @@
         </div>
     </div>
 
-    <!-- Internet Consumption Header and Side-by-Side Charts -->
-    <h2>INTERNET CONSUMPTION</h2>
-    <div class="two-column">
+    <!-- Internet Consumption Header and Three-Column Layout for Charts -->
+    <h2>Internet consumption</h2>
+    <div class="three-column">
         <div id="internet-user-stream" class="chart"></div>
+        <div id="internet-unemployment-bar" class="chart"></div> <!-- Bar chart in the middle -->
         <div id="learning-platform-dot" class="chart"></div>
     </div>
+
+    <!-- Paragraph summarizing the three charts, centered -->
+    <p class="center-text">
+        The three visualizations provide insights into global internet consumption patterns. The chart on the left shows the growth of internet usage over time, highlighting the increasing gap between high-income countries and others. In the middle, the bar chart examines how internet access varies by employment status, indicating that those out of the workforce or unemployed are more likely to lack internet access. On the right, the dot plot illustrates the distribution of learning platforms offered across different income groups, showing that higher-income countries tend to provide a wider variety of platforms, while low-income countries rely more on traditional methods like radio and television.
+    </p>
 
     <!-- Embedding the Vega-Lite charts using JavaScript -->
     <script type="text/javascript">
@@ -145,6 +158,9 @@
 
         // Internet User Stream Chart
         vegaEmbed('#internet-user-stream', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/interney_user_stream.json').catch(console.error);
+
+        // Internet Unemployment Bar Chart
+        vegaEmbed('#internet-unemployment-bar', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/internet_unemployement.json').catch(console.error);
 
         // Learning Platform Dot Chart
         vegaEmbed('#learning-platform-dot', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/learning_platform_dot.json').catch(console.error);
