@@ -9,20 +9,20 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             margin: 20px;
             background-color: white; /* No background color */
         }
         h1 {
             text-align: center;
-            background-color: #2d31bd; /* Dark blue background for the title */
-            color: white; /* White text color */
+            background-color: #062a5a; /* Dark blue background for the title */
+            color: whitesmoke; /* White text color */
             padding: 15px;
             border-radius: 8px;
         }
         h2 {
             text-align: center;
-            background-color: #cce5ff; /* Light blue background for the subheadings */
+            background-color: #91bcf5; /* Light blue background for the subheadings */
             padding: 5px; /* Reduced padding */
             border-radius: 5px;
             text-transform: capitalize; /* Capitalize first letter of subheadings */
@@ -36,9 +36,9 @@
             display: flex;
             justify-content: center;
         }
-        .three-column {
+        .two-column {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
         .chart-container {
@@ -49,6 +49,10 @@
         .centered {
             display: flex;
             justify-content: center; /* Center the content */
+        }
+        .centered-map {
+            display: flex;
+            justify-content: center; /* Center the map */
         }
         .side-by-side {
             display: flex;
@@ -76,6 +80,24 @@
         .center-text {
             text-align: center; /* Center text alignment */
         }
+        .highlight-heading {
+            font-size: 20px; /* Making specific headings larger */
+        }
+        .color-asia {
+            color: purple;
+        }
+        .color-europe {
+            color: orange;
+        }
+        .color-africa {
+            color: red;
+        }
+        .color-namerica {
+            color: lightblue;
+        }
+        .color-samerica {
+            color: darkblue;
+        }
     </style>
 </head>
 <body>
@@ -84,21 +106,19 @@
 
     <!-- Literacy Rates Header and Choropleth Map with Text -->
     <h2>Literacy rates</h2>
-    <div class="side-by-side">
-        <!-- Choropleth Map on the Left -->
+    <div class="centered-map"> <!-- Centering the choropleth map -->
         <div class="chart" id="chloropleth-map"></div>
+    </div>
         
-        <!-- Text Section on the Right -->
+    <!-- Text Section Below the Map -->
+    <div class="side-by-side">
         <div class="text-section">
             <p><strong>Key Insights:</strong></p>
             <p>
-                From the map, we observe that countries in North America, Europe, and parts of Asia have high youth literacy rates, with most countries in these regions shaded in dark blue, indicating literacy rates close to 100%. On the other hand, countries in Sub-Saharan Africa and South Asia are shaded in lighter blue, showing lower literacy rates, particularly in countries such as Chad, Niger, and Afghanistan, where educational resources may be scarce, and literacy challenges are more pronounced.
+                Countries in <span class="color-namerica">North America</span>, <span class="color-europe">Europe</span>, and parts of <span class="color-asia">Asia</span> show high youth literacy rates, with <span class="color-africa">Sub-Saharan Africa</span> and <span class="color-asia">South Asia</span> lagging behind. These disparities highlight socio-economic differences.
             </p>
             <p>
-                This disparity reflects the socio-economic differences between countries, where access to quality education, gender equality in education, and governmental policies significantly impact literacy outcomes. This map highlights the regions that may require targeted educational interventions to boost literacy rates among the youth.
-            </p>
-            <p>
-                Additionally, the data points to the importance of governmental and organizational investments in education to reduce these disparities. For instance, countries with more significant financial resources and robust education systems tend to demonstrate higher literacy rates. In contrast, regions lacking infrastructure and educational resources struggle to improve literacy, often leaving the younger population disadvantaged in a highly digital world.
+                Education investments are crucial in improving these outcomes, especially for countries with limited resources and infrastructure, which leads to a struggle in reducing literacy gaps.
             </p>
         </div>
     </div>
@@ -119,52 +139,51 @@
 
         <!-- Text Section on the Right -->
         <div class="text-right">
-            <h3>Learning Poverty and Internet Access Analysis</h3>
+            <p><strong class="highlight-heading">High Learning Poverty, Low Internet Access:</strong></p>
             <p>
-                The bubble chart illustrates a significant global challenge: learning poverty in relation to internet access and a country's wealth, measured by GNI per capita. Larger bubbles represent countries with larger populations, while their color shows the percentage of internet users in each country.
+                Countries in <span class="color-africa">Africa</span> have some of the highest learning poverty rates, combined with low internet access. Limited digital resources in these countries make it harder for students to access online education, especially in rural areas. This creates a significant education gap, with many children lacking the skills to succeed.
             </p>
-            <p><strong>Key Insights:</strong></p>
-            <ul>
-                <li><strong>High Learning Poverty, Low GNI:</strong> Many of the larger bubbles fall into the lower GNI and higher learning poverty ranges. These countries tend to have a lower percentage of internet users and are likely to face significant challenges in accessing digital resources, which exacerbates learning poverty.</li>
-                <li><strong>Internet Access Influence:</strong> Countries with more internet access (green bubbles) tend to have a lower learning poverty rate, indicating a correlation between digital access and improved educational outcomes.</li>
-                <li><strong>Economic Divide:</strong> Wealthier countries (higher GNI per capita) are clustered at the lower end of the learning poverty scale, which shows how economic resources may contribute to reducing learning poverty. However, internet access also plays a vital role in bridging this educational gap.</li>
-            </ul>
+
+            <p><strong class="highlight-heading">Internet Access and Wealth:</strong></p>
+            <p>
+                Wealthier nations like <span class="color-asia">Singapore</span> and <span class="color-asia">Qatar</span> stand out with very low learning poverty rates. These countries have almost complete internet access and high GDP per capita. In contrast, <span class="color-africa">African</span> nations with lower GNI, like Niger and Chad, exhibit both high poverty and low access to digital resources.
+            </p>
+
+            <p><strong class="highlight-heading">Regional Comparisons:</strong></p>
+            <p>
+                In <span class="color-europe">Europe</span>, many countries benefit from high internet access, which helps reduce learning poverty across the region. Countries like <span class="color-namerica">North America</span> also show similar patterns, with low learning poverty due to extensive digital infrastructure and government support for education.
+            </p>
         </div>
     </div>
 
-    <!-- Internet Consumption Header and Three-Column Layout for Charts -->
+    <!-- Internet Consumption Header and Two-Column Layout for Charts -->
     <h2>Internet consumption</h2>
-    <div class="three-column">
+    <div class="two-column">
         <div id="internet-user-stream" class="chart"></div>
-        <div id="internet-unemployment-bar" class="chart"></div> <!-- Bar chart in the middle -->
-        <div id="learning-platform-dot" class="chart"></div>
+        <div id="learning-platform-dot" class="chart"></div> <!-- Only two charts remain here -->
     </div>
 
-    <!-- Paragraph summarizing the three charts, centered -->
+    <!-- Paragraph summarizing the two charts, centered -->
     <p class="center-text">
-        The three visualizations provide insights into global internet consumption patterns. The chart on the left shows the growth of internet usage over time, highlighting the increasing gap between high-income countries and others. In the middle, the bar chart examines how internet access varies by employment status, indicating that those out of the workforce or unemployed are more likely to lack internet access. On the right, the dot plot illustrates the distribution of learning platforms offered across different income groups, showing that higher-income countries tend to provide a wider variety of platforms, while low-income countries rely more on traditional methods like radio and television.
+        The two visualizations provide insights into global internet consumption patterns. The chart on the left shows the growth of internet usage over time, highlighting the increasing gap between high-income countries and others. On the right, the dot plot illustrates the distribution of learning platforms offered across different income groups, showing that higher-income countries tend to provide a wider variety of platforms, while low-income countries rely more on traditional methods like radio and television.
     </p>
 
     <!-- Embedding the Vega-Lite charts using JavaScript -->
     <script type="text/javascript">
         // Choropleth Map
-        vegaEmbed('#chloropleth-map', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/chloropleth_lr.json').catch(console.error);
+        vegaEmbed('#chloropleth-map', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/chloropleth.json').catch(console.error);
 
         // Completion Donut Chart
         vegaEmbed('#completion-donut', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/completion_donut.json').catch(console.error);
 
         // Learning Poverty Bubble Chart
-        vegaEmbed('#learning-poverty', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/learning_poverty_bubble.json').catch(console.error);
+        vegaEmbed('#learning-poverty', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/bubble_3.json').catch(console.error);
 
         // Internet User Stream Chart
-        vegaEmbed('#internet-user-stream', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/interney_user_stream.json').catch(console.error);
-
-        // Internet Unemployment Bar Chart
-        vegaEmbed('#internet-unemployment-bar', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/internet_unemployement.json').catch(console.error);
+        vegaEmbed('#internet-user-stream', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/stream_3.json').catch(console.error);
 
         // Learning Platform Dot Chart
-        vegaEmbed('#learning-platform-dot', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/learning_platform_dot.json').catch(console.error);
+        vegaEmbed('#learning-platform-dot', 'https://raw.githubusercontent.com/nitzzzzzzzz/tests/refs/heads/main/dot_2.json').catch(console.error);
     </script>
-
 </body>
 </html>
